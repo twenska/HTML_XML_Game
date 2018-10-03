@@ -156,7 +156,7 @@ class Lobby extends Phaser.Scene{
                     document.getElementById("Hinweis").innerHTML = "Gehe auf die rechte Tür zu und drücke die Interaktionstaste um hindurchzugehen!";
                 }else{
                 if(this.inRange(this.door,30,50) && this.DialogEmpfangDone){
-                    this.scene.start("Hausmeister", {score: this.score});
+                    this.scene.start("Hausmeister", {score: this.score,user: this.user});
                 
                 }else{
                     this.inDialog = true;
