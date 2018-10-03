@@ -44,7 +44,7 @@ class Lobby extends Phaser.Scene{
             this.score = 0;
             document.getElementById("Punkte").innerHTML="Punkte: "+this.score;
             document.getElementById("Level").innerHTML="Die Lobby";
-            document.getElementById("User").innerHTML=this.user;
+            document.getElementById("User").innerHTML="User: "+this.user;
             document.getElementById("Hinweis").innerHTML = "In Dialogen kannst du mit der Interaktionstaste weiterblättern!\nDie Dialoge enthalten oft wichtige Informationen. Du solltest sie also aufmerksam lesen.\n Hast du einen Dialog nicht richtig gelesen kannst du ihn mit der Interaktionstaste erneut starten!";
             //boden
             for(var i=0;i<=game.config.width;i+=32){
