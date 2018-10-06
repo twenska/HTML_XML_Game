@@ -7,21 +7,28 @@ class Lobby extends Phaser.Scene{
         {
             this.load.spritesheet('floor', 'assets/floors.png', { frameWidth: 32, frameHeight: 32 } );
             this.load.spritesheet('laptop', 'assets/laptop.png', { frameWidth: 32, frameHeight: 32 });
-            this.load.image('sketch', 'assets/wiki-sketch.png', {frameWidth: 800, frameHeight: 600});
             this.load.spritesheet('dude', 'assets/Spieler.png', { frameWidth: 30, frameHeight: 32 });
             this.load.spritesheet('sekretaer', 'assets/Sekretaerin.png', { frameWidth: 28, frameHeight: 32 });
             this.load.image('dialog', 'assets/dialogbox.png', {frameWidth: 1024, frameHeight: 576});
             this.load.spritesheet('LobbyDesk', 'assets/BrownWalls.png', {frameWidth: 48, frameHeight: 16});
+            this.load.spritesheet('teppich', 'assets/teppich.png', {frameWidth: 32, frameHeight: 32});
+            this.load.image('LobbyDesk_90', 'assets/LobbyDesk_Hoch.png', {frameWidth: 16, frameHeight: 48});
             this.load.image('Tuer', 'assets/Tuer.png', {frameWidth: 31, frameHeight: 35});
             this.load.image('Gelaender', 'assets/gelaender.png', {frameWidth: 532, frameHeight: 13});
-            this.load.image('Welcome1', 'assets/Dialoge/Welcome1.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Welcome2', 'assets/Dialoge/Welcome2.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Welcome3', 'assets/Dialoge/Welcome3.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Welcome4', 'assets/Dialoge/Welcome4.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Empfang1', 'assets/Dialoge/Empfang1.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Empfang2', 'assets/Dialoge/Empfang2.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Empfang3', 'assets/Dialoge/Empfang3.png', {frameWidth: 379, frameHeight: 171});
-            this.load.image('Empfang4', 'assets/Dialoge/Empfang4.png', {frameWidth: 379, frameHeight: 171});
+            this.load.image('Fenster', 'assets/window.png',{frameWidth:110, frameHeight: 55});
+            this.load.image('DoppelTuer', 'assets/DoppelTuer.png', {frameWidth: 64, frameHeight: 48});
+            this.load.image('Tisch', 'assets/Desk.png', {frameWidth: 90, frameHeight: 69});
+            this.load.image('TischZettel', 'assets/TischZettel.png', {frameWidth: 32, frameHeight: 32});
+            this.load.image('Workstation', 'assets/workstation.png',{frameWidth:55, frameHeight: 50});
+            this.load.image('Copier', 'assets/copier.png',{frameWidth:55, frameHeight: 55});
+            this.load.spritesheet('Stuehle', 'assets/Stuehle.png', {frameWidth: 30.75, frameHeight: 46});
+            this.load.spritesheet('shelves', 'assets/Shelves.png', { frameWidth: 32, frameHeight: 64 });
+            this.load.image('Paper', 'assets/Paper.png',{frameWidth:9, frameHeight: 11});
+            this.load.image('Teppich_Krone', 'assets/teppich_krone.png', {frameWidth: 92, frameHeight: 89});
+            this.load.image('Teppich_Gruen', 'assets/Teppich_gruen.png', {frameWidth: 92, frameHeight: 89});
+            this.load.image('Pflanze', 'assets/Pflanze.png', {frameWidth: 25, frameHeight: 56});
+            this.load.image('Vase', 'assets/Vase.png', {frameWidth: 28, frameHeight: 32});
+
 
         }
 
@@ -60,19 +67,15 @@ class Lobby extends Phaser.Scene{
             stairs.create(107,64,'floor',102);
             stairs.create(107,96,'floor',102);
 
-            this.gelaenderL = this.physics.add.image(59, 60, 'Gelaender').setAngle(90).setScale(0.2);
-            this.gelaenderR = this.physics.add.image(123, 60, 'Gelaender').setAngle(90).setScale(0.2);
-            this.makeImmovable(this.gelaenderL);
-            this.makeImmovable(this.gelaenderR);
 
             LobbyDesk.create(256,160, 'LobbyDesk',24).setScale(2);
-            LobbyDesk.create(352,160, 'LobbyDesk',24).setScale(2);
-            LobbyDesk.create(444,160, 'LobbyDesk',24).setScale(2);
-            LobbyDesk.create(536,160, 'LobbyDesk',24).setScale(2);
-            LobbyDesk.create(628,160, 'LobbyDesk',24).setScale(2);
-            LobbyDesk.create(208,128, 'LobbyDesk',24).setScale(2).setAngle(90);
-            LobbyDesk.create(676,128, 'LobbyDesk',24).setScale(2).setAngle(90);
-            LobbyDesk.create(676,32, 'LobbyDesk',24).setScale(2).setAngle(90);
+            LobbyDesk.create(335,160, 'LobbyDesk',24).setScale(2);
+            LobbyDesk.create(414,160, 'LobbyDesk',24).setScale(2);
+            LobbyDesk.create(493,160, 'LobbyDesk',24).setScale(2);
+            LobbyDesk.create(572,160, 'LobbyDesk',24).setScale(2);
+            LobbyDesk.create(208,128, 'LobbyDesk_90').setScale(2);
+            LobbyDesk.create(626,128, 'LobbyDesk_90').setScale(2);
+            LobbyDesk.create(626,32, 'LobbyDesk_90').setScale(2);
         
             //this.physics.add.sprite(0, 0, 'floor', 5);
             //left wall
@@ -91,13 +94,66 @@ class Lobby extends Phaser.Scene{
             for(var i = 0; i<=game.config.width;i+=32){
                 border.create(i,game.config.height-16, 'floor',5);
             }
+            this.physics.add.image(78,370,'Teppich_Krone').setAngle(270);
+            this.physics.add.image(390,223,'Teppich_Gruen');
+            this.physics.add.image(480,223,'Teppich_Gruen');
 
-            this.player = this.physics.add.sprite(200, 460, 'dude',5).setScale(1.2);
+
+            this.physics.add.image(760,130,'Fenster').setAngle(270);
+            this.physics.add.image(760,300,'Fenster').setAngle(270);
+            this.physics.add.image(760,470,'Fenster').setAngle(270);
+
+            this.physics.add.image(200,560,'Fenster');
+            this.physics.add.image(400,560,'Fenster');
+            this.physics.add.image(600,560,'Fenster');
+
+            this.TischZettel=this.physics.add.image(300,32,'TischZettel');
+            this.makeImmovable(this.TischZettel);
+            this.shelve1 = this.physics.add.sprite(350, 20, 'shelves',34)
+            this.makeImmovable(this.shelve1);
+            this.shelve2 = this.physics.add.sprite(382, 20, 'shelves',35)
+            this.makeImmovable(this.shelve2);
+            this.workstation = this.physics.add.image(450,24,'Workstation');
+            this.makeImmovable(this.workstation);
+
+            this.Vase1 = this.physics.add.image(45,305,'Vase');
+            this.makeImmovable(this.Vase1);
+            this.Vase2 = this.physics.add.image(45,420,'Vase');
+            this.makeImmovable(this.Vase2);
+            this.Pflanze1 = this.physics.add.image(45,24,'Pflanze');
+            this.makeImmovable(this.Pflanze1);
+            this.Pflanze2 = this.physics.add.image(135,24,'Pflanze');
+            this.makeImmovable(this.Pflanze2);
+
+            this.Tisch=this.physics.add.image(600,450,'Tisch');
+            this.makeImmovable(this.Tisch);
+            this.physics.add.image(580,435,'Paper').setAngle(180);
+            this.physics.add.image(595,435,'Paper').setAngle(180);
+            this.physics.add.image(590,439,'Paper').setAngle(180);
+            this.physics.add.image(590,425,'Paper').setAngle(180);
+
+            this.Stuhl1=this.physics.add.sprite(540, 440, 'Stuehle',2);
+            this.makeImmovable(this.Stuhl1);
+            this.Stuhl2=this.physics.add.sprite(575, 480, 'Stuehle',1);
+            this.makeImmovable(this.Stuhl2);
+            this.Stuhl3=this.physics.add.sprite(620, 480, 'Stuehle',1);
+            this.makeImmovable(this.Stuhl3);
+            this.Stuhl4=this.physics.add.sprite(655, 440, 'Stuehle',3);
+            this.makeImmovable(this.Stuhl4);
+
+
+            this.player = this.physics.add.sprite(50, 370, 'dude',1).setScale(1.2);
             this.sekretaer = this.physics.add.sprite(420,130, 'sekretaer',5).setScale(1.2);
             this.makeImmovable(this.sekretaer);
 
-            this.laptop = this.physics.add.sprite(470,90,'laptop',3);
+
             this.door = this.physics.add.image(730, 13, 'Tuer');
+
+            this.EingangsDoor = this.physics.add.image(8, 370, 'DoppelTuer').setAngle(270);
+
+            this.BueroDoor = this.physics.add.image(91, 8, 'DoppelTuer')
+
+            
 
             this.Dialog = this.physics.add.image(420, 520, 'dialog').setScale(0.65);
             this.Dialog.setVisible(false);
@@ -108,6 +164,13 @@ class Lobby extends Phaser.Scene{
             this.physics.add.collider(this.player, this.gelaenderR);
             this.physics.add.collider(this.player, this.sekretaer);
             this.physics.add.collider(this.player, this.laptop);
+            this.physics.add.collider(this.player, this.Tisch);
+            this.physics.add.collider(this.player, this.Stuhl1);
+            this.physics.add.collider(this.player, this.Stuhl2);
+            this.physics.add.collider(this.player, this.Stuhl3);
+            this.physics.add.collider(this.player, this.Stuhl4);
+            this.physics.add.collider(this.player, this.Vase1);
+            this.physics.add.collider(this.player, this.Vas2);
             
             //  Our player animations, turning, walking left and walking right.
             this.anims.create({
@@ -146,7 +209,7 @@ class Lobby extends Phaser.Scene{
             //  Input Events
             this.input.keyboard.on('keyup_I', function(e){
             
-                if(this.inRange(this.sekretaer,30,70)){
+                if(this.inRange(this.sekretaer,50,70)){
                     this.inDialog = true;
                     this.actualDialog = this.DialogEmpfang;
                     console.log(this.actualDialog);

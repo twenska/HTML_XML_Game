@@ -10,7 +10,7 @@ class Hausmeister extends Phaser.Scene{
     {
         this.load.spritesheet('floor', 'assets/floors.png', { frameWidth: 32, frameHeight: 32 } );
         this.load.spritesheet('dude', 'assets/Spieler.png', { frameWidth: 30, frameHeight: 32 });
-        this.load.spritesheet('janitor', 'assets/Janitor.png', { frameWidth: 29, frameHeight: 32 });
+        this.load.spritesheet('janitor', 'assets/Janitor.png', { frameWidth: 29, frameHeight: 30 });
         this.load.image('Tuer', 'assets/Tuer.png', {frameWidth: 31, frameHeight: 35});
         this.load.image('dialog', 'assets/dialogbox.png', {frameWidth: 1024, frameHeight: 576});
         this.load.image('Fenster', 'assets/window.png',{frameWidth:110, frameHeight: 55});
@@ -18,48 +18,13 @@ class Hausmeister extends Phaser.Scene{
         this.load.spritesheet('shelves', 'assets/Shelves.png', { frameWidth: 32, frameHeight: 64 });
         this.load.image('Aufgabe_Ausweis', 'assets/Aufgaben/Ausweis.png',{frameWidth:800, frameHeight: 600});
         this.load.image('Aufgabe_Zertifikat', 'assets/Aufgaben/Zertifikat.png',{frameWidth:800, frameHeight: 600});
-
-        this.load.image('Hausmeister1', 'assets/Dialoge/Hausmeister1.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Hausmeister2', 'assets/Dialoge/Hausmeister2.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Hausmeister3', 'assets/Dialoge/Hausmeister3.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Hausmeister4', 'assets/Dialoge/Hausmeister4.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Hausmeister5', 'assets/Dialoge/Hausmeister5.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Hausmeister6', 'assets/Dialoge/Hausmeister6.png', {frameWidth: 379, frameHeight: 171});
-
-        this.load.image('Aufgabe_Ausweis_1_1', 'assets/Dialoge/Aufgabe_Ausweis_Option1_1.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_1_2', 'assets/Dialoge/Aufgabe_Ausweis_Option1_2.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_1_3', 'assets/Dialoge/Aufgabe_Ausweis_Option1_3.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_1_4', 'assets/Dialoge/Aufgabe_Ausweis_Option1_4.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_1_5', 'assets/Dialoge/Aufgabe_Ausweis_Option1_5.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_1_6', 'assets/Dialoge/Aufgabe_Ausweis_Option1_6.png', {frameWidth: 379, frameHeight: 171});
-
-        this.load.image('Aufgabe_Ausweis_2_1', 'assets/Dialoge/Aufgabe_Ausweis_Option2_1.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_2_2', 'assets/Dialoge/Aufgabe_Ausweis_Option2_2.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_2_3', 'assets/Dialoge/Aufgabe_Ausweis_Option2_3.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_2_4', 'assets/Dialoge/Aufgabe_Ausweis_Option2_4.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_2_5', 'assets/Dialoge/Aufgabe_Ausweis_Option2_5.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Ausweis_2_6', 'assets/Dialoge/Aufgabe_Ausweis_Option2_6.png', {frameWidth: 379, frameHeight: 171});
-
-        this.load.image('Aufgabe_Zertifikat1', 'assets/Dialoge/Aufgabe_Zertifikat1.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat2', 'assets/Dialoge/Aufgabe_Zertifikat2.png', {frameWidth: 379, frameHeight: 171});
-
-        this.load.image('Aufgabe_Zertifikat1_1', 'assets/Dialoge/Aufgabe_Zertifikat_Option1_1.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat1_2', 'assets/Dialoge/Aufgabe_Zertifikat_Option1_2.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat1_3', 'assets/Dialoge/Aufgabe_Zertifikat_Option1_3.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat1_4', 'assets/Dialoge/Aufgabe_Zertifikat_Option1_4.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat1_5', 'assets/Dialoge/Aufgabe_Zertifikat_Option1_5.png', {frameWidth: 379, frameHeight: 171});
-
-        this.load.image('Aufgabe_Zertifikat2_1', 'assets/Dialoge/Aufgabe_Zertifikat_Option2_1.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat2_2', 'assets/Dialoge/Aufgabe_Zertifikat_Option2_2.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat2_3', 'assets/Dialoge/Aufgabe_Zertifikat_Option2_3.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat2_4', 'assets/Dialoge/Aufgabe_Zertifikat_Option2_4.png', {frameWidth: 379, frameHeight: 171});
-        this.load.image('Aufgabe_Zertifikat2_5', 'assets/Dialoge/Aufgabe_Zertifikat_Option2_5.png', {frameWidth: 379, frameHeight: 171});
         
     }
     create()
     {
         var border = this.physics.add.staticGroup();
         var floor = this.physics.add.staticGroup();
+        this.janitorMoving = false;
         
         this.DialogHausmeister = this.physics.add.group();
         this.DialogAufgabeAusweis1 = this.physics.add.group();
@@ -108,7 +73,7 @@ class Hausmeister extends Phaser.Scene{
         }
 
         this.player = this.physics.add.sprite(85, 550, 'dude',0).setScale(1.2);
-        this.janitor = this.physics.add.sprite(600, 360, 'janitor',6).setScale(1.2);
+        this.janitor = this.physics.add.sprite(630, 360, 'janitor',6).setScale(1.2);
         this.makeImmovable(this.janitor);
 
         this.door = this.physics.add.image(80, 587, 'Tuer').setAngle(180);
@@ -129,38 +94,7 @@ class Hausmeister extends Phaser.Scene{
         this.physics.add.collider(this.player, this.workstation);
         this.physics.add.collider(this.player, this.janitor);
 
-        this.anims.create({
-            key: 'left',
-            frames: [ { key: 'dude', frame: 3 },{ key: 'dude', frame: 6 },{ key: 'dude', frame: 9 } ],
-            frameRate: 10,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'dude', frame: 0 } ],
-            frameRate: 20
-        });
-
-        this.anims.create({
-            key: 'right',
-            frames: [ { key: 'dude', frame: 1 },{ key: 'dude', frame: 4 },{ key: 'dude', frame: 7 } ],
-            //frames: this.anims.generateFrameNumbers('dude', { 1,4,7 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'up',
-            frames: [ { key: 'dude', frame: 2 },{ key: 'dude', frame: 0 },{ key: 'dude', frame: 10 } ],
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'down',
-            frames: [ { key: 'dude', frame: 5 },{ key: 'dude', frame: 8 },{ key: 'dude', frame: 11 } ],
-            frameRate: 10,
-            repeat: -1
-        });
+        this.createAnimations();
 
         this.input.keyboard.on('keyup_I', function(e){
             if(this.inDialog){
@@ -175,13 +109,15 @@ class Hausmeister extends Phaser.Scene{
                 }
                 //Aufgabe Zertifikat - Start
                 if(this.inRange(this.workstation,50,50) && this.AufgabeAusweisDone && !this.AufgabeZertifikatDone){
+                    this.janitorMoving = true;
+                    console.log("TRUE"+this.janitor.y);
                     this.inDialog = true;
                     this.actualDialog = this.DialogAufgabeZertifikat;
                     this.actualTask = this.Aufgabe_Zertifikat;
                     this.toggleDialog();
                 }
                 if(this.inRange(this.door,30,50) && this.AufgabeAusweisDone && this.AufgabeZertifikatDone){
-                    this.scene.start("Lobby");
+                    this.scene.start("Lobby_2");
                 }
             }
     },this);
@@ -258,7 +194,7 @@ update(){
         this.Key_D.enabled = false;
     }else{
         if((this.time.now - this.Key_W.timeUp) <= 500){
-            console.log(this.time.now);
+            //console.log(this.time.now);
             this.player.setVelocityY(0);
             this.player.anims.stop();
             this.Key_A.enabled = true;
@@ -320,6 +256,7 @@ update(){
         if(this.input.mousePointer.x >= 209 && this.input.mousePointer.x <= 560 && this.input.mousePointer.y >= 370 && this.input.mousePointer.y <= 445){
             this.score = this.score - 50;
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
+            document.getElementById("Hinweis").innerHTML = "Im Technologiezentrum der Firma KRONE ist es für jeden Mitarbeiter Pflicht seinen Mitarbeiterausweis gut sichtbar zu tragen. Aus diesem Grund sollten Sie in jedem Fall Personen ohne sichtbar angebrachten Ausweis darauf ansprechen!";
             this.Aufgabe_Ausweis.setVisible(false);
             this.inDialog = true;
             this.actualDialog = this.DialogAufgabeAusweis1;
@@ -332,6 +269,7 @@ update(){
         if(this.input.mousePointer.x >= 209 && this.input.mousePointer.x <= 560 && this.input.mousePointer.y >= 458 && this.input.mousePointer.y <= 527){
             this.score = this.score + 50;
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
+            document.getElementById("Hinweis").innerHTML = "Im Technologiezentrum der Firma KRONE ist es für jeden Mitarbeiter Pflicht seinen Mitarbeiterausweis gut sichtbar zu tragen. Aus diesem Grund sollten Sie in jedem Fall Personen ohne sichtbar angebrachten Ausweis darauf ansprechen!";
             this.Aufgabe_Ausweis.setVisible(false);
             this.inDialog = true;
             this.actualDialog = this.DialogAufgabeAusweis2;
@@ -349,6 +287,7 @@ update(){
         if(this.input.mousePointer.x >= 156 && this.input.mousePointer.x <= 653 && this.input.mousePointer.y >= 347 && this.input.mousePointer.y <= 445){
             this.score = this.score + 50;
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
+            document.getElementById("Hinweis").innerHTML = "Zertifikate werden zur Verschlüsselung ihres Webtraffics benötigt. Wenn die Verschlüsselung erfolgreich klappt, zeigen die meisten Browser ein grünes Schloss neben der eingegebenen URL. Eine Zertifikatswarnung könnte ein Zeichen dafür sein, dass jemand versucht ihre Verbindung mitzulesen. Wenden Sie sich in diesem Fall umgehend an die IT!";
             this.Aufgabe_Zertifikat.setVisible(false);
             this.inDialog = true;
             this.actualDialog = this.DialogAufgabeZertifikat1;
@@ -361,6 +300,7 @@ update(){
         if(this.input.mousePointer.x >= 156 && this.input.mousePointer.x <= 653 && this.input.mousePointer.y >= 458 && this.input.mousePointer.y <= 541){
             this.score = this.score - 50;
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
+            document.getElementById("Hinweis").innerHTML = "Zertifikate werden zur Verschlüsselung ihres Webtraffics benötigt. Wenn die Verschlüsselung erfolgreich klappt, zeigen die meisten Browser ein grünes Schloss neben der eingegebenen URL. Eine Zertifikatswarnung könnte ein Zeichen dafür sein, dass jemand versucht ihre Verbindung mitzulesen. Wenden Sie sich in diesem Fall umgehend an die IT!";
             this.Aufgabe_Zertifikat.setVisible(false);
             this.inDialog = true;
             this.actualDialog = this.DialogAufgabeZertifikat2;
@@ -371,8 +311,22 @@ update(){
         }
         //console.log("x:"+this.input.mousePointer.x);
         //console.log("y:"+this.input.mousePointer.y);
+
     }
-    
+    if(this.janitorMoving == true && this.janitor.y > 270){
+        this.janitor.body.immovable = false; this.janitor.body.moves = true;
+        this.janitor.setVelocityY(-160);
+        this.janitor.anims.play('up_j', true);
+    }
+    if(this.janitorMoving == true && this.janitor.y <= 270){
+        this.janitor.setVelocityY(0);
+        this.janitor.anims.stop();
+        this.janitor.anims.play('turn_j',true);
+        this.janitor.anims.stop();
+        this.makeImmovable(this.janitor);
+        this.janitor = false;
+
+    }
 }
 
 inRange(objekt,x,y){
@@ -413,6 +367,7 @@ toggleDialog(){
                             this.actualDialog = undefined;
                             this.actualTask = undefined;
                         }else{
+                            console.log("enabled");
                             this.Key_W.enabled = true;
                             this.Key_A.enabled = true;
                             this.Key_S.enabled = true;
@@ -426,6 +381,8 @@ toggleDialog(){
                 }    
         }
         if(firstRun){
+            console.log("disabled");
+
             this.Dialog.setVisible(true);
             child[0].setVisible(true);
             this.Key_W.enabled = false;
@@ -434,6 +391,73 @@ toggleDialog(){
             this.Key_D.enabled = false;
         }
     }    
+}
+
+createAnimations(){
+    this.anims.create({
+        key: 'left',
+        frames: [ { key: 'dude', frame: 3 },{ key: 'dude', frame: 6 },{ key: 'dude', frame: 9 } ],
+        frameRate: 10,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'turn',
+        frames: [ { key: 'dude', frame: 0 } ],
+        frameRate: 20
+    });
+
+    this.anims.create({
+        key: 'right',
+        frames: [ { key: 'dude', frame: 1 },{ key: 'dude', frame: 4 },{ key: 'dude', frame: 7 } ],
+        //frames: this.anims.generateFrameNumbers('dude', { 1,4,7 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'up',
+        frames: [ { key: 'dude', frame: 2 },{ key: 'dude', frame: 0 },{ key: 'dude', frame: 10 } ],
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'down',
+        frames: [ { key: 'dude', frame: 5 },{ key: 'dude', frame: 8 },{ key: 'dude', frame: 11 } ],
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'left_j',
+        frames: [ { key: 'janitor', frame: 3 },{ key: 'janitor', frame: 6 },{ key: 'janitor', frame: 9 } ],
+        frameRate: 10,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'turn_j',
+        frames: [ { key: 'janitor', frame: 5 } ],
+        frameRate: 20
+    });
+
+    this.anims.create({
+        key: 'right_j',
+        frames: [ { key: 'janitor', frame: 1 },{ key: 'janitor', frame: 4 },{ key: 'janitor', frame: 7 } ],
+        //frames: this.anims.generateFrameNumbers('janitor', { 1,4,7 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'up_j',
+        frames: [ { key: 'janitor', frame: 2 },{ key: 'janitor', frame: 0 },{ key: 'janitor', frame: 10 } ],
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'down_j',
+        frames: [ { key: 'janitor', frame: 5 },{ key: 'janitor', frame: 8 },{ key: 'janitor', frame: 11 } ],
+        frameRate: 10,
+        repeat: -1
+    });
 }
 
 }
