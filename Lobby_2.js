@@ -3,6 +3,11 @@ class Lobby_2 extends Phaser.Scene{
     constructor(){
         super({key:"Lobby_2"});
     }
+    init(data){
+        this.score = data.score;
+        this.user = data.user;
+        this.gameID = data.gameID;
+    }
     preload ()
         {
             this.load.spritesheet('floor', 'assets/floors.png', { frameWidth: 32, frameHeight: 32 } );
@@ -551,6 +556,42 @@ createAnimations(){
         frameRate: 10,
         repeat: -1
     });
+}
+
+questionAPI(json)
+{
+    //ItemJSON = {gameId: 1, questionId: 1, answer: 1 };
+
+    URL = "http://localhost:3001/answer";  //Your URL
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.open("POST", URL, false);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.send(json);
+    alert(xmlhttp.responseText);
+    document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" + xmlhttp.responseText + "</textarea>";
+}
+endGame()
+{
+    json = {gameId: this.gameID, score: this.score, time: 1 };
+
+    URL = "http://localhost:3001/end-game";  //Your URL
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.open("POST", URL, false);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.send(json);
+    alert(xmlhttp.responseText);
+    document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" + xmlhttp.responseText + "</textarea>";
+}
+
+callbackFunction(xmlhttp) 
+{
+    alert(xmlhttp.responseXML);
 }
 
 }

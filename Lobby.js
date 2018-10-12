@@ -34,7 +34,9 @@ class Lobby extends Phaser.Scene{
 
     create ()
         {
-            this.user = "twenska";
+            this.user = this.getCookie(Name);
+            this.gameID = this.getCookie(gameID);
+
             var border = this.physics.add.staticGroup();
             var floor = this.physics.add.staticGroup();
             var LobbyDesk = this.physics.add.staticGroup();
@@ -219,7 +221,7 @@ class Lobby extends Phaser.Scene{
                     document.getElementById("Hinweis").innerHTML = "Gehe auf die rechte Tür zu und drücke die Interaktionstaste um hindurchzugehen!";
                 }else{
                 if(this.inRange(this.door,30,50) && this.DialogEmpfangDone){
-                    this.scene.start("Hausmeister", {score: this.score,user: this.user});
+                    this.scene.start("Hausmeister", {score: this.score,user: this.user,gameID: this.gameID});
                 
                 }else{
                     this.inDialog = true;
@@ -387,4 +389,11 @@ class Lobby extends Phaser.Scene{
         }    
     }
 
+getCookie(name){
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+    } 
+
 }
+

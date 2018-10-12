@@ -5,6 +5,8 @@ class Hausmeister extends Phaser.Scene{
     }
     init(data){
         this.score = data.score;
+        this.user = data.user;
+        this.gameID = data.gameID;
     }
     preload ()
     {
@@ -117,7 +119,7 @@ class Hausmeister extends Phaser.Scene{
                     this.toggleDialog();
                 }
                 if(this.inRange(this.door,30,50) && this.AufgabeAusweisDone && this.AufgabeZertifikatDone){
-                    this.scene.start("Lobby_2");
+                    this.scene.start("Lobby_2",{score: this.score,user: this.user,gameID: this.gameID});
                 }
             }
     },this);
@@ -255,6 +257,8 @@ update(){
         //Option1
         if(this.input.mousePointer.x >= 209 && this.input.mousePointer.x <= 560 && this.input.mousePointer.y >= 370 && this.input.mousePointer.y <= 445){
             this.score = this.score - 50;
+            var json = {gameId: this.gameID, questionId: 1, answer: 2};//falsche Antwort
+            this.questionAPI(json);
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
             document.getElementById("Hinweis").innerHTML = "Im Technologiezentrum der Firma KRONE ist es für jeden Mitarbeiter Pflicht seinen Mitarbeiterausweis gut sichtbar zu tragen. Aus diesem Grund sollten Sie in jedem Fall Personen ohne sichtbar angebrachten Ausweis darauf ansprechen!";
             this.Aufgabe_Ausweis.setVisible(false);
@@ -268,6 +272,8 @@ update(){
         //Option2
         if(this.input.mousePointer.x >= 209 && this.input.mousePointer.x <= 560 && this.input.mousePointer.y >= 458 && this.input.mousePointer.y <= 527){
             this.score = this.score + 50;
+            var json = {gameId: this.gameID, questionId: 1, answer: 1};//richtige Antwort
+            this.questionAPI(json);
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
             document.getElementById("Hinweis").innerHTML = "Im Technologiezentrum der Firma KRONE ist es für jeden Mitarbeiter Pflicht seinen Mitarbeiterausweis gut sichtbar zu tragen. Aus diesem Grund sollten Sie in jedem Fall Personen ohne sichtbar angebrachten Ausweis darauf ansprechen!";
             this.Aufgabe_Ausweis.setVisible(false);
@@ -286,6 +292,8 @@ update(){
         //Option1
         if(this.input.mousePointer.x >= 156 && this.input.mousePointer.x <= 653 && this.input.mousePointer.y >= 347 && this.input.mousePointer.y <= 445){
             this.score = this.score + 50;
+            var json = {gameId: this.gameID, questionId: 2, answer: 1};//richtige Antwort
+            this.questionAPI(json);
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
             document.getElementById("Hinweis").innerHTML = "Zertifikate werden zur Verschlüsselung ihres Webtraffics benötigt. Wenn die Verschlüsselung erfolgreich klappt, zeigen die meisten Browser ein grünes Schloss neben der eingegebenen URL. Eine Zertifikatswarnung könnte ein Zeichen dafür sein, dass jemand versucht ihre Verbindung mitzulesen. Wenden Sie sich in diesem Fall umgehend an die IT!";
             this.Aufgabe_Zertifikat.setVisible(false);
@@ -299,6 +307,8 @@ update(){
         //Option2
         if(this.input.mousePointer.x >= 156 && this.input.mousePointer.x <= 653 && this.input.mousePointer.y >= 458 && this.input.mousePointer.y <= 541){
             this.score = this.score - 50;
+            var json = {gameId: this.gameID, questionId: 2, answer: 2};//falsche Antwort
+            this.questionAPI(json);
             document.getElementById("Punkte").innerHTML= "Punkte: "+ this.score;
             document.getElementById("Hinweis").innerHTML = "Zertifikate werden zur Verschlüsselung ihres Webtraffics benötigt. Wenn die Verschlüsselung erfolgreich klappt, zeigen die meisten Browser ein grünes Schloss neben der eingegebenen URL. Eine Zertifikatswarnung könnte ein Zeichen dafür sein, dass jemand versucht ihre Verbindung mitzulesen. Wenden Sie sich in diesem Fall umgehend an die IT!";
             this.Aufgabe_Zertifikat.setVisible(false);
@@ -459,5 +469,24 @@ createAnimations(){
         repeat: -1
     });
 }
+questionAPI(json)
+{
+    //ItemJSON = {gameId: 1, questionId: 1, answer: 1 };
 
+    URL = "http://localhost:3001/answer" + urlvariable;  //Your URL
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.open("POST", URL, false);
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+    xmlhttp.send(json);
+    alert(xmlhttp.responseText);
+    document.getElementById("div").innerHTML = xmlhttp.statusText + ":" + xmlhttp.status + "<BR><textarea rows='100' cols='100'>" + xmlhttp.responseText + "</textarea>";
+}
+
+callbackFunction(xmlhttp) 
+{
+    alert(xmlhttp.responseXML);
+}
 }
